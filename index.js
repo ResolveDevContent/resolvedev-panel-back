@@ -19,10 +19,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
-    res.send("Hola");
-})
-
 app.use("/auth", authRoutes)
 
 app.listen(3000, () => {
