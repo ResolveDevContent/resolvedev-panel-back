@@ -7,6 +7,16 @@ const listar = (req,res,model) => {
     })
 }
 
+const listarUno = (req,res,model) => {
+    const { id } = req.params;
+
+    model.findOne({_id: id}).then((result) => {
+        res.status(200).send(result)
+    }).catch((err) => {
+        res.status(400).send(err)
+    })
+}
+
 const agregar = (req, res, model) => {
     const data = new model(req.body)
 
@@ -44,4 +54,4 @@ const borrar = (req,res, model) => {
 
 }
 
-module.exports = { listar, agregar, modificar, borrar }
+module.exports = { listar, listarUno, agregar, modificar, borrar }
