@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-const authRoutes = require("./routes/auth");
 const db = require("./db")
 const cookieParser = require("cookie-parser");
+
+const authRoutes = require("./routes/auth");
+const ABMroutes = require("./routes/ABM");
 
 const app = express();
 
@@ -20,6 +22,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/auth", authRoutes)
+app.use("/abm", ABMroutes)
 
 app.listen(3000, () => {
     console.log("Iniciar servidor desde 3000");
