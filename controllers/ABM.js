@@ -47,7 +47,8 @@ const borrar = (req,res, model) => {
     const { id } = req.params;
 
     model.deleteOne({_id: id}).then((result) => {
-        res.status(200).send({message: "Se elimino correctamente"})
+        res.json({message: "Se elimino correctamente"})
+        res.status(200).send("Eliminado")
     }).catch((err) => {
         res.status(400).send({message: err.message})
     })
