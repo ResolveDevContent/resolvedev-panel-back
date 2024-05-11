@@ -3,7 +3,7 @@ const listar = (req,res,model) => {
     model.find().then((result) => {
         res.status(200).send(result);
     }).catch((err) => {
-        res.status(400).send(err)
+        res.status(400).send({message: err.message})
     })
 }
 
@@ -13,7 +13,7 @@ const listarUno = (req,res,model) => {
     model.findOne({_id: id}).then((result) => {
         res.status(200).send(result)
     }).catch((err) => {
-        res.status(400).send(err)
+        res.status(400).send({message: err.message})
     })
 }
 
@@ -21,9 +21,9 @@ const agregar = (req, res, model) => {
     const data = new model(req.body)
 
     data.save().then((result) => {
-        res.status(200).send(result);
+        res.status(200).send({message: "Agregado correctamente"});
     }).catch((err) => {
-        res.status(400).send(err)
+        res.status(400).send({message: err.message})
     })
 }
 
@@ -36,9 +36,9 @@ const modificar = (req,res, model) => {
     
         Object.assign(data, req.body)
         data.save().then((result) => {
-            res.status(200).send(result)
+            res.status(200).send({message: "Modificado correctamente"})
         }).catch((err) => {
-            res.status(400).send(err)
+            res.status(400).send({message: err.message})
         })
     })
 }
@@ -47,9 +47,9 @@ const borrar = (req,res, model) => {
     const { id } = req.params;
 
     model.deleteOne({_id: id}).then((result) => {
-        res.status(200).send("Se elimino correctamente")
+        res.status(200).send({message: "Se elimino correctamente"})
     }).catch((err) => {
-        res.status(400).send(err)
+        res.status(400).send({message: err.message})
     })
 
 }
