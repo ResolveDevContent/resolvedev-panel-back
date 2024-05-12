@@ -21,9 +21,9 @@ const agregar = (req, res, model) => {
     const data = new model(req.body)
 
     data.save().then((result) => {
-        res.status(200).send({message: "Agregado correctamente"});
+        res.status(201).json({message: "Agregado correctamente"});
     }).catch((err) => {
-        res.status(400).send({message: err.message})
+        res.status(400).json({message: err.message})
     })
 }
 
