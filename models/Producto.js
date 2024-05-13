@@ -25,9 +25,9 @@ const ProductoSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    categoria: {
+    categorias: {
         type: mongoose.Schema.ObjectId,
-        ref: "categoria",
+        ref: "categorias",
         required: true,
     },
     descuento: {

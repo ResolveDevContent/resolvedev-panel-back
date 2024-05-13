@@ -7,6 +7,6 @@ const TalleSchema = new mongoose.Schema({
     }
 })
 
-const Talle = mongoose.model("Talle", TalleSchema)
+const Talle = mongoose.model("Talles", TalleSchema)
 
 module.exports = Talle
