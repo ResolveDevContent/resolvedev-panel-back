@@ -5,24 +5,24 @@ const ProductoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    descripcion: {
+    precio: {
         type: String,
-        required: true,
-    },
-    caracteristicas: {
-        type: Array,
         required: true,
     },
     stock: {
         type: String,
         required: true
     },
-    precio: {
+    carrito: {
+        type: Boolean,
+        required: true,
+    },
+    descripcion: {
         type: String,
         required: true,
     },
-    carrito: {
-        type: Boolean,
+    caracteristicas: {
+        type: Array,
         required: true,
     },
     categorias: {
