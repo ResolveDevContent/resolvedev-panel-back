@@ -4,7 +4,6 @@ const { authenticate } = require("../middlewares/Auth")
 
 const Producto = require("../models/Producto");
 const Categoria = require("../models/Categoria");
-const Talle = require("../models/Talle");
 const Tienda = require("../models/Tienda");
 
 const router = express.Router();
