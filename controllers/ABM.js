@@ -1,10 +1,23 @@
 
 const listar = (req,res,model) => {
-    model.find().then((result) => {
-        res.status(200).json(result);
-    }).catch((err) => {
-        res.status(400).json({message: err.message})
-    })
+    const { query } = JSON.parse(req.query)
+
+    try {
+        if (query.length) {
+            model.find({caracteristicas: { $in: query }})
+            .then((result) => {
+                res.status(200).json(result);
+            })
+        } else {
+            model.find()
+            .then((result) => {
+                res.status(200).json(result);
+            })
+        }
+    }
+    catch(error) {
+      res.status(500).json({message: error.message})
+    }
 }
 
 const listarUno = (req,res,model) => {
