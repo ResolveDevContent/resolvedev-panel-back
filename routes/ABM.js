@@ -5,6 +5,7 @@ const { authenticate } = require("../middlewares/Auth")
 const Producto = require("../models/Producto");
 const Categoria = require("../models/Categoria");
 const Talle = require("../models/Talle");
+const Tienda = require("../models/Tienda");
 
 const router = express.Router();
 
@@ -24,12 +25,10 @@ router.post("/categorias/agregar", authenticate, (req,res) => { agregar(req,res,
 router.put("/categorias/modificar/:id", authenticate, (req,res) => { modificar(req,res,Categoria) } )
 router.delete("/categorias/borrar/:id", authenticate, (req,res) => { borrar(req,res,Categoria) } )
 
-// TALLES -----------------------------------------------------------------
+// TIENDA -----------------------------------------------------------------
 
-router.get("/talles/listar", authenticate, (req,res) => { listar(req,res,Talle) } )
-router.get("/talles/listar/:id", authenticate, (req,res) => { listarUno(req,res,Talle) } )
-router.post("/talles/agregar", authenticate, (req,res) => { agregar(req,res,Talle) } )
-router.put("/talles/modificar/:id", authenticate, (req,res) => { modificar(req,res,Talle) } )
-router.delete("/talles/borrar/:id", authenticate, (req,res) => { borrar(req,res,Talle) } )
+router.get("/tienda/listar", authenticate, (req,res) => { listar(req,res,Tienda) } )
+router.post("/tienda/agregar", authenticate, (req,res) => { agregar(req,res,Tienda) } )
+router.put("/tienda/modificar/:id", authenticate, (req,res) => { modificar(req,res,Tienda) } )
 
 module.exports = router;

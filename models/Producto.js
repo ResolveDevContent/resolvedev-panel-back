@@ -46,17 +46,6 @@ const ProductoSchema = new mongoose.Schema({
     unidad: {
         type: String,
     },
-
-    //----------------------
-    talles: {
-        type: mongoose.Schema.ObjectId,
-        ref: "talle",
-        required: true
-    },
-    color: {
-        type: Array,
-        required: true,
-    }
 })
 
 const Producto = mongoose.model("Producto", ProductoSchema)
