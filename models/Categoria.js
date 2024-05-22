@@ -7,7 +7,11 @@ const CategoriaSchema = new mongoose.Schema({
     },
     subcategorias: {
         type: Array
-    }
+    },
+    imagen: {
+        type: String,
+        required: true,
+    },
 })
 
 const Categoria = mongoose.model("Categorias", CategoriaSchema)
