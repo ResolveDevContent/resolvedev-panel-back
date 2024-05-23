@@ -76,4 +76,18 @@ const login = (req, res, model) => {
   });
 };
 
-module.exports = { register, login }
+const update = (req,res,model) => {
+  const { id } = req.params;
+  model.findOne({ _id: id }).then((data) => {
+      if(!data) { res.status(400).json({message: "No encontrado"})}
+  
+      Object.assign(data, req.body)
+      data.save().then((result) => {
+          res.status(200).json({message: "Se ha modificado correctamente"})
+      }).catch((err) => {
+          res.status(400).json({message: err.message})
+      })
+  })
+}
+
+module.exports = { register, login, update }
