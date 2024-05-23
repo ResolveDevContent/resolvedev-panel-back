@@ -13,8 +13,15 @@ const register = (req, res, model) => {
         email: email,
         password: hashedPassword,
       });
+      
+      const token = jwt.sign(
+        { userId: user._id, userEmail: user.email },
+        process.env.SECRET,
+        { expiresIn: 3 * 24 * 60 * 60 }
+      );
 
       user.save().then((result) => {
+        result.token = token
         res.status(201).send({ message: "Se ha registrado correctamente", result });
       });
     })
