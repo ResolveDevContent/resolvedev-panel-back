@@ -1,15 +1,14 @@
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-const Usuario = require("../models/Usuario")
 require("dotenv").config()
 
-const register = (req, res) => {
+const register = (req, res, model) => {
   const { name, email, password } = req.body
 
   bcrypt
     .hash(password, 10)
     .then((hashedPassword) => {
-      const user = new Usuario({
+      const user = new model({
         name: name,
         email: email,
         password: hashedPassword,
@@ -33,10 +32,10 @@ const register = (req, res) => {
     });
 }
 
-const login = (req, res) => {
+const login = (req, res, model) => {
   const { email, password } = req.body
   
-  Usuario.findOne({ email: email }).then((user) => {
+  model.findOne({ email: email }).then((user) => {
     bcrypt
       .compare(password, user.password)
       .then((passwordCheck) => {
