@@ -21,8 +21,7 @@ const register = (req, res, model) => {
       );
 
       user.save().then((result) => {
-        result.token = token
-        res.status(201).send({ message: "Se ha registrado correctamente", result });
+        res.status(201).send({ message: "Se ha registrado correctamente", result, token });
       });
     })
     .catch((err) => {
