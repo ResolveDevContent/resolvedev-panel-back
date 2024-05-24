@@ -3,17 +3,13 @@ const mongoose = require("mongoose")
 const FiltroSchema = new mongoose.Schema({
     nombre: {
         type: String,
-        require: true
+        required: true
     },
     opciones: {
         type: [{
-            id: {
+            nombre: {
                 type: String,
-                default: Date.now()
-            },
-            name: {
-                type: String,
-                require: true
+                required: true
             }
         }]
     }

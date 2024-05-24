@@ -47,8 +47,12 @@ const ProductoSchema = new mongoose.Schema({
         type: String,
     },
     filtros: {
-        type: mongoose.Schema.ObjectId,
-        ref: "filtro"
+        type: [{
+            filtro: {
+                type: String,
+            },
+            opciones: []
+        }]
     }
 })
 

@@ -29,7 +29,7 @@ router.delete("/categorias/borrar/:id", authenticate, (req,res) => { borrar(req,
 
 router.get("/filtros/listar", (req,res) => { listar(req,res,Filtro) } )
 router.get("/filtros/listar/:id", (req,res) => { listarUno(req,res,Filtro) } )
-router.post("filtross/agregar", authenticate, (req,res) => { agregar(req,res,Filtro) } )
+router.post("/filtros/agregar", authenticate, (req,res) => { agregar(req,res,Filtro) } )
 router.put("/filtros/modificar/:id", authenticate, (req,res) => { modificar(req,res,Filtro) } )
 router.delete("/filtros/borrar/:id", authenticate, (req,res) => { borrar(req,res,Filtro) } )
 
