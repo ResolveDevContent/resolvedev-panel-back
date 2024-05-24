@@ -46,6 +46,10 @@ const ProductoSchema = new mongoose.Schema({
     unidad: {
         type: String,
     },
+    filtros: {
+        type: mongoose.Schema.ObjectId,
+        ref: "filtro"
+    }
 })
 
 const Producto = mongoose.model("Producto", ProductoSchema)
