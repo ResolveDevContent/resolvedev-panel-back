@@ -20,7 +20,15 @@ const TiendaSchema = new mongoose.Schema({
         type: String,
     },
     promociones: {
-        type: Boolean
+        type: {
+            disponible: {
+                type: Boolean,
+                required: true
+            },
+            titulo: {
+                type: String,
+            } 
+        }
     }
 })
 
