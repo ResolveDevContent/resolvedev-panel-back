@@ -1,5 +1,5 @@
 const express = require("express");
-const { listar, agregar, modificar, borrar, listarUno } = require("../controllers/ABM");
+const { listar, listarRelacionados, agregar, modificar, borrar, listarUno } = require("../controllers/ABM");
 const { authenticate } = require("../middlewares/Auth")
 
 const Producto = require("../models/Producto");
@@ -12,6 +12,7 @@ const router = express.Router();
 // PRODUCTOS ------------------------------------------------------------------
 
 router.get("/productos/listar", (req,res) => { listar(req,res,Producto) } )
+router.get("/productos/listarRelacionados/:categoria", (req,res) => { listarRelacionados(req,res,Producto) } )
 router.get("/productos/listar/:id", (req,res) => { listarUno(req,res,Producto) } )
 router.post("/productos/agregar", authenticate, (req,res) => { agregar(req,res,Producto) } ) 
 router.put("/productos/modificar/:id", authenticate, (req,res) => { modificar(req,res,Producto) } )

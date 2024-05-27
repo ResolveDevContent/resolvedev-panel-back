@@ -1,6 +1,16 @@
-
 const listar = (req,res,model) => {
     model.find().then((result) => {
+        res.status(200).json(result);
+    }).catch((err) => {
+        res.status(400).json({message: err.message})
+    })
+}
+
+const listarRelacionados = (req,res,model) => {
+    const { categoria } = req.params
+    const query = { categorias: categoria };
+    
+    model.find(query).then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
         res.status(400).json({message: err.message})
@@ -52,4 +62,4 @@ const borrar = (req,res, model) => {
 
 }
 
-module.exports = { listar, listarUno, agregar, modificar, borrar }
+module.exports = { listar, listarRelacionados, listarUno, agregar, modificar, borrar }
