@@ -22,7 +22,11 @@ const ProductoSchema = new mongoose.Schema({
         required: true,
     },
     caracteristicas: {
-        type: Array,
+        type: [{
+            nombre: {
+                type: String
+            }
+        }],
         required: true,
     },
     categorias: {
