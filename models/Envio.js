@@ -5,6 +5,10 @@ const EnvioSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    informacion: {
+        type: String,
+        required: true
+    },
     precio: {
         type: Number,
         required: true,
