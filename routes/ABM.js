@@ -6,6 +6,7 @@ const Producto = require("../models/Producto");
 const Categoria = require("../models/Categoria");
 const Filtro = require("../models/Filtro");
 const Tienda = require("../models/Tienda");
+const Envio = require("../models/Envio")
 
 const router = express.Router();
 
@@ -33,6 +34,14 @@ router.get("/filtros/listar/:id", (req,res) => { listarUno(req,res,Filtro) } )
 router.post("/filtros/agregar", authenticate, (req,res) => { agregar(req,res,Filtro) } )
 router.put("/filtros/modificar/:id", authenticate, (req,res) => { modificar(req,res,Filtro) } )
 router.delete("/filtros/borrar/:id", authenticate, (req,res) => { borrar(req,res,Filtro) } )
+
+// ENVIOS -----------------------------------------------------------------
+
+router.get("/envios/listar", (req,res) => { listar(req,res,Envio) } )
+router.get("/envios/listar/:id", (req,res) => { listarUno(req,res,Envio) } )
+router.post("/envios/agregar", authenticate, (req,res) => { agregar(req,res,Envio) } )
+router.put("/envios/modificar/:id", authenticate, (req,res) => { modificar(req,res,Envio) } )
+router.delete("/envios/borrar/:id", authenticate, (req,res) => { borrar(req,res,Envio) } )
 
 // TIENDA -----------------------------------------------------------------
 
