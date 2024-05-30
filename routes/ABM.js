@@ -7,6 +7,7 @@ const Categoria = require("../models/Categoria");
 const Filtro = require("../models/Filtro");
 const Tienda = require("../models/Tienda");
 const Envio = require("../models/Envio")
+const Banner = require("../models/Banner")
 
 const router = express.Router();
 
@@ -48,5 +49,11 @@ router.delete("/envios/borrar/:id", authenticate, (req,res) => { borrar(req,res,
 router.get("/tienda/listar", (req,res) => { listar(req,res,Tienda) } )
 router.post("/tienda/agregar", authenticate, (req,res) => { agregar(req,res,Tienda) } )
 router.put("/tienda/modificar/:id", authenticate, (req,res) => { modificar(req,res,Tienda) } )
+
+// TIENDA -----------------------------------------------------------------
+
+router.get("/banners/listar", (req,res) => { listar(req,res,Banner) } )
+router.post("/banners/agregar", authenticate, (req,res) => { agregar(req,res,Banner) } )
+router.put("/banners/modificar/:id", authenticate, (req,res) => { modificar(req,res,Banner) } )
 
 module.exports = router;
