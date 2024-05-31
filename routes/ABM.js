@@ -47,6 +47,7 @@ router.delete("/envios/borrar/:id", authenticate, (req,res) => { borrar(req,res,
 // TIENDA -----------------------------------------------------------------
 
 router.get("/tienda/listar", (req,res) => { listar(req,res,Tienda) } )
+router.get("/tienda/listar/:id", (req,res) => { listarUno(req,res,Tienda) } )
 router.post("/tienda/agregar", authenticate, (req,res) => { agregar(req,res,Tienda) } )
 router.put("/tienda/modificar/:id", authenticate, (req,res) => { modificar(req,res,Tienda) } )
 
