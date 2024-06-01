@@ -14,7 +14,7 @@ router.post("/tienda/register", (req, res) => register(req, res, UsuarioTienda))
 router.post("/tienda/login", (req, res) => login(req, res, UsuarioTienda))
 
 router.get("/perfil", authenticate, (req, res) => {
-    res.json({ message: "Tu email: " + req.user.email})
+    res.json({ message: req.user})
 })
 
 router.get("/tienda/perfil", authenticateTienda, (req, res) => {
