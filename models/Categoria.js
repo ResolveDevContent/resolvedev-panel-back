@@ -5,9 +5,6 @@ const CategoriaSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    subcategorias: {
-        type: Array,
-    },
     imagen: {
         type: String,
         required: true,
