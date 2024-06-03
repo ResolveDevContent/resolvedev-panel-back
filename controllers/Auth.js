@@ -79,14 +79,34 @@ const login = (req, res, model) => {
 const update = (req,res,model) => {
   const { id } = req.params;
   model.findOne({ _id: id }).then((data) => {
-      if(!data) { res.status(400).json({message: "No encontrado"})}
+    if(!data) { res.status(400).json({message: "No encontrado"})}
   
-      Object.assign(data, req.body)
+    const password = req.body.password,
+          name = req.body.name,
+          email = req.body.email;
+    
+    bcrypt
+    .hash(password, 10)
+    .then((hashedPassword) => {
+      const user = {
+        name: name,
+        email: email,
+        password: hashedPassword,
+      };
+
+      Object.assign(data, user)
       data.save().then((result) => {
           res.status(200).json({message: "Se ha modificado correctamente"})
       }).catch((err) => {
           res.status(400).json({message: err.message})
       })
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error",
+        err,
+      });
+    })
   })
 }
 
